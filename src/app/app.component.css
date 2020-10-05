@@ -1,0 +1,90 @@
+.main-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo-section {
+  width: 15rem;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 60%, rgba(250, 185, 94, 1) 90%);
+  border-top-left-radius: 10px;
+}
+
+.logo {
+  width: 14rem;
+  top: 250px;
+  left: 20px;
+  transform: translate(20px, 250px);
+}
+
+.appointment-section {
+  flex: 1;
+}
+
+.card {
+  border: 0px whitesmoke solid;
+  border-radius: 0;
+  width: 20rem;
+}
+
+.submitButton {
+  background-color: orange;
+  color: white;
+  float: right;
+  width: 10rem;
+  border-radius: 20px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.card-header {
+  background: rgb(250, 185, 94);
+  background: linear-gradient(90deg, rgba(250, 185, 94, 1) 4%, rgba(255, 165, 0, 1) 19%, rgba(255, 165, 0, 1) 33%);
+  color: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 0;
+}
+
+.card-body {
+  border: none;
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
+}
+
+.header {
+  margin-top: 2%;
+  font-size: 1.3em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tp-full-width {
+  width: 100%;
+}
+.list-content{
+  margin-top: 10px;
+}
+.alignleft {
+  float: left;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding-left: 10px;
+}
+.alignright {
+  float: right;
+  font-size: 13px;
+  font-family: "American Typewriter";
+  padding-right: 10px;
+}
+.confirmation-card{
+  background-color: snow;
+}
+.form-section{
+  margin-bottom: 8px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
