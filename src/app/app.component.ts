@@ -47,9 +47,8 @@ export class AppComponent implements OnInit {
 
   submitForm() {
     this.bookingRequest.bookingSlot = this.bookingSlot;
-    this.http.post(environment.domain + AppConstants.API_ENDPOINT_SUBMIT_BOOKING, this.bookingRequest).subscribe(response => {
-      this.bookingRequest.bookingToken = response;
-      console.log(this.bookingRequest.bookingToken);
+    this.http.post<BookingRequest>(environment.domain + AppConstants.API_ENDPOINT_SUBMIT_BOOKING, this.bookingRequest).subscribe(response => {
+      this.bookingRequest.bookingToken = response.bookingToken;
     });
   }
 
