@@ -1,3 +1,7 @@
+.container{
+  margin-top: 10%;
+}
+
 .main-section {
   display: flex;
   flex-direction: row;
@@ -18,7 +22,7 @@
 }
 
 .appointment-section {
-  flex: 1;
+  flex: 2;
 }
 
 .card {
@@ -35,6 +39,11 @@
   border-radius: 20px;
   font-size: 1em;
   font-weight: 600;
+  box-shadow: 1px 1px 5px black;
+}
+
+.submitButton:disabled{
+  background: darkorange;
 }
 
 .card-header {
@@ -80,15 +89,13 @@
 .confirmation-card{
   background-color: snow;
 }
-.form-section{
-  margin-bottom: 8px;
-}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-@media screen and (max-width:800px){
+@media screen and (max-width:700px){
   .main-section {
     display: flex;
     flex-direction: column;
@@ -108,7 +115,7 @@ input[type=number]::-webkit-outer-spin-button {
 
   .logo-section {
     width: 100%;
-    height: 100px;
+    height: 100%;
     border-radius:0;
     background: white;
   }
@@ -118,8 +125,10 @@ input[type=number]::-webkit-outer-spin-button {
     height: 5rem;
     object-fit: contain;
     top: 0;
-    left: 50%;
-    transform: translateX(50%);
+    left: 0;
+    transform: unset;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
-
 }
