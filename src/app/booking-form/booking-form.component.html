@@ -1,0 +1,43 @@
+<div class="booking-card">
+  <div class="booking-header">
+    <p class="booking-header-text">Seva Booking</p>
+  </div>
+  <div class="card-body">
+    <p style="background-color: red; color: white;font-size: 0.9em;width: 100%;text-align: center;" *ngIf="isError"> Please fill all required elements</p>
+    <mat-form-field class="tp-full-width">
+      <input matInput type="text" id="name" placeholder="Name" [(ngModel)]="this.bookingRequest.fullName" (keyup)="validateRequest()">
+      <mat-error *ngIf="true">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="tp-full-width">
+      <input matInput type="text" id="phone" placeholder="Phone" [(ngModel)]="this.phoneNumber" maxlength="10" (keyup)="validateRequest()">
+    </mat-form-field>
+    <mat-form-field class="tp-full-width">
+      <input matInput placeholder="Ex. pat@example.com" id="email" [(ngModel)]="this.bookingRequest.email" (keyup)="validateRequest()">
+    </mat-form-field>
+    <mat-form-field class="tp-full-width">
+      <mat-label>Seva Type</mat-label>
+      <mat-select placeholder="Appointment Type" name="appointmentType" [(ngModel)]="this.bookingRequest.bookingType">
+        <mat-option *ngFor="let type of appointmentTypes" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="tp-full-width form-section">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" disabled (dateChange)="getTimings($event.target.value)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="tp-full-width form-section" *ngIf="timings.length > 0">
+      <mat-label>Seva Time</mat-label>
+      <mat-select placeholder="Appointment Time" name="appointmentTime" [(ngModel)]="this.selectedTime" (selectionChange)="setTiming()">
+        <mat-option *ngFor="let time of timings" [value]="time">
+          {{time}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="form-group mt-2">
+      <button type="button" class="btn submitButton" (click)="submitForm()">Submit
+      </button>
+    </div>
+  </div>
+</div>

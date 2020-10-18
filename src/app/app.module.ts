@@ -11,10 +11,27 @@ import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
+import { HeaderComponent } from './header/header.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
+import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import {BookingRequestService} from './Model/BookingRequestService';
+import { AdminComponent } from './admin/admin.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    AdminHomeComponent,
+    BookingFormComponent,
+    BookingConfirmationComponent,
+    AdminLoginComponent,
+    AdminComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -29,8 +46,10 @@ import {MatListModule} from '@angular/material/list';
     FormsModule,
     MatListModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
+    MatTableModule,
   ],
-  providers: [],
+  providers: [BookingRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

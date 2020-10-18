@@ -1,0 +1,119 @@
+<div class="nav-header">
+
+</div>
+<div class="dashboard-section">
+  <div class="menu-section">
+
+    <mat-list role="list" class="menu-list">
+      <mat-list-item role="listitem" class="list-item">
+        <img src="https://sbat.org/assets/images/logo.png" class="admin-logo">
+      </mat-list-item>
+      <mat-list-item role="listitem" class="list-item">Dashboard</mat-list-item>
+      <mat-list-item role="listitem" class="list-item" routerLink="/">Log Out</mat-list-item>
+    </mat-list>
+  </div>
+  <div class="details-section">
+    <p class="heading-section">Booking's Dashboard</p>
+    <div class="table-section">
+      <p class="table-heading">Seva Booking List</p>
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+      <mat-table [dataSource]="data" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="#">
+          <mat-header-cell *matHeaderCellDef > No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.bookingSkey}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name">
+          <mat-header-cell *matHeaderCellDef > Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.fullName}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Email">
+          <mat-header-cell *matHeaderCellDef > Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Phone">
+          <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.phoneNo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Slot">
+          <mat-header-cell *matHeaderCellDef> Booking Slot </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{getDateTime(element.bookingSlot)}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Token #">
+          <mat-header-cell *matHeaderCellDef> Booking Token </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.bookingToken}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dashboard-section{
+    display: flex;
+    flex-direction: row;
+  }
+  .menu-section{
+    min-height: 100vh;
+    height: 100vh;
+    background-color: #fab453;
+    flex: 1;
+  }
+  .details-section{
+    flex: 6;
+    width: 100%;
+    height: auto;
+    background-color: snow;
+  }
+  .table-section{
+    margin-left: 5%;
+  }
+  .heading-section{
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    font-size: 3em;
+  }
+  mat-table{
+    width: 70rem;
+  }
+  mat-paginator{
+    width: 70rem;
+  }
+  .menu-list{
+    margin-top: 20rem;
+    width: 100%;
+  }
+  .list-item{
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  .list-item:hover{
+    font-size: 1.7em;
+  }
+  .table-heading{
+    font-size: 1.5em;
+    margin-bottom: 2%;
+  }
+  .admin-logo{
+    width: 100%;
+    margin-bottom: 30%;
+    object-fit: cover;
+  }
+</style>

@@ -1,0 +1,17 @@
+<div class="booking-card">
+  <div class="booking-header">
+    <p class="booking-header-text">Admin Login</p>
+  </div>
+  <p style="background-color: red; color: white;font-size: 0.9em;width: 100%;text-align: center;" *ngIf="isError"> Username and password is incorrect</p>
+  <div class="card-body">
+    <mat-form-field class="tp-full-width">
+      <input matInput type="text" id="username" placeholder="username" [(ngModel)]="this.loginRequest.userName" (keyup)="validateRequest()">
+    </mat-form-field>
+    <mat-form-field class="tp-full-width">
+      <input matInput type="password" id="password" placeholder="password" [(ngModel)]="this.loginRequest.pass" (keyup)="validateRequest()">
+    </mat-form-field>
+    <div class="form-group mt-2">
+      <button type="button" class="btn submitButton" (click)="login()" [disabled]="isLoginDisable">Login</button>
+    </div>
+  </div>
+</div>

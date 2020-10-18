@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  domain: 'http://18.220.102.171:9001'
+  domain: 'https://api.hungrypanda.us'
 };
 
 /*
