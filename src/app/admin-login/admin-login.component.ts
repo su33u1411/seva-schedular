@@ -5,8 +5,8 @@ import {environment} from '../../environments/environment';
 import {AppConstants} from '../app-constants';
 
 export interface LoginRequest {
-  userName: string;
-  pass: string;
+  username: string;
+  password: string;
 }
 
 @Component({
@@ -23,13 +23,14 @@ export class AdminLoginComponent implements OnInit {
   constructor(private route: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.loginRequest = {userName: '', pass: ''};
+    this.loginRequest = {username: '', password: ''};
   }
 
   login() {
     this.http.post(environment.domain + AppConstants.API_ENDPOINT_LOGIN, this.loginRequest).subscribe(response => {
       const responseBody = JSON.parse(JSON.stringify(response));
-      if (responseBody.is_active === 1 && responseBody.is_authenticated === 1 ){
+      if (responseBody.active && responseBody.jwt){
+        sessionStorage.setItem('sbaT', 'Bearer ' + responseBody.jwt);
         this.route.navigateByUrl('/admin-home');
       }else{
         this.isError = true;
@@ -40,7 +41,7 @@ export class AdminLoginComponent implements OnInit {
   }
 
   validateRequest() {
-    if (this.loginRequest.userName && this.loginRequest.pass){
+    if (this.loginRequest.username && this.loginRequest.password){
       this.isLoginDisable = false;
       this.isError = false;
     } else{

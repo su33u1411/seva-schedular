@@ -1,11 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {AppConstants} from '../app-constants';
 import * as _moment from 'moment';
-import {MatSort} from '@angular/material/sort';
 
 export interface BookingElement {
   bookingSkey: number;
@@ -32,7 +31,10 @@ export class AdminHomeComponent implements OnInit, AfterViewInit{
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.http.get<BookingElement[]>(environment.domain + AppConstants.API_ENDPOINT_GET_BOOKING).subscribe(response => {
+    const headers = new HttpHeaders({
+      Authorization: sessionStorage.getItem('sbaT')});
+    const options = { headers };
+    this.http.get<BookingElement[]>(environment.domain + AppConstants.API_ENDPOINT_GET_BOOKING, options).subscribe(response => {
       this.data = new MatTableDataSource<BookingElement>(response);
       this.data.paginator = this.paginator;
     });
@@ -45,5 +47,9 @@ export class AdminHomeComponent implements OnInit, AfterViewInit{
 
   getDateTime(bookingSlot: any) {
     return _moment(bookingSlot).format('YYYY-MM-DD MM:HH');
+  }
+
+  logout() {
+    sessionStorage.clear();
   }
 }

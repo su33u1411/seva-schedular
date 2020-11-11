@@ -5,10 +5,10 @@
   <p style="background-color: red; color: white;font-size: 0.9em;width: 100%;text-align: center;" *ngIf="isError"> Username and password is incorrect</p>
   <div class="card-body">
     <mat-form-field class="tp-full-width">
-      <input matInput type="text" id="username" placeholder="username" [(ngModel)]="this.loginRequest.userName" (keyup)="validateRequest()">
+      <input matInput type="text" id="username" placeholder="username" [(ngModel)]="this.loginRequest.username" (keyup)="validateRequest()">
     </mat-form-field>
     <mat-form-field class="tp-full-width">
-      <input matInput type="password" id="password" placeholder="password" [(ngModel)]="this.loginRequest.pass" (keyup)="validateRequest()">
+      <input matInput type="password" id="password" placeholder="password" [(ngModel)]="this.loginRequest.password" (keyup)="validateRequest()">
     </mat-form-field>
     <div class="form-group mt-2">
       <button type="button" class="btn submitButton" (click)="login()">Login</button>
