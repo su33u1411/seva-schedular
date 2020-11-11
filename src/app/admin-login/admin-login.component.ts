@@ -42,8 +42,10 @@ export class AdminLoginComponent implements OnInit {
   validateRequest() {
     if (this.loginRequest.userName && this.loginRequest.pass){
       this.isLoginDisable = false;
+      this.isError = false;
     } else{
       this.isLoginDisable = true;
+      this.isError = true;
     }
   }
 }

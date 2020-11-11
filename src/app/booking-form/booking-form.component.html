@@ -3,7 +3,7 @@
     <p class="booking-header-text">Seva Booking</p>
   </div>
   <div class="card-body">
-    <p style="background-color: red; color: white;font-size: 0.9em;width: 100%;text-align: center;" *ngIf="isError"> Please fill all required elements</p>
+    <p style="background-color: red; color: white;font-size: 0.9em;width: 100%;text-align: center;" *ngIf="isError"> Please fill all required fields</p>
     <mat-form-field class="tp-full-width">
       <input matInput type="text" id="name" placeholder="Name" [(ngModel)]="this.bookingRequest.fullName" (keyup)="validateRequest()">
       <mat-error *ngIf="true">Name is required</mat-error>
